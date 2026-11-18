@@ -1,0 +1,32 @@
+name: Gameslist checks
+on:
+  push:
+    branches: [main, feature/gameslist-v1]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Catalogue and page checks
+        run: npm test
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.js
+          node --check games.js
+      - name: Validate SVG images
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import xml.etree.ElementTree as ET
+          for asset in [pathlib.Path('favicon.svg'), *pathlib.Path('assets/previews').glob('*.svg')]:
+              ET.parse(asset)
+              print('OK', asset)
+          PY
