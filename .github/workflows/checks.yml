@@ -21,3 +21,12 @@ jobs:
         run: |
           node --check app.js
           node --check games.js
+      - name: Validate SVG images
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import xml.etree.ElementTree as ET
+          for asset in [pathlib.Path('favicon.svg'), *pathlib.Path('assets/previews').glob('*.svg')]:
+              ET.parse(asset)
+              print('OK', asset)
+          PY
