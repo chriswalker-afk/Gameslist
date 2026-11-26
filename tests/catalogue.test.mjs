@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { games, categories } from '../games.js';
 
-const expected = ['ink','index','quadratics','nova','pileup','bloop','shadow','snow','sampling','lds','words'];
-test('all eleven selected sites appear exactly once', () => {
- assert.equal(games.length, 11);
+const expected = ['ink','index','quadratics','nova','balance','pileup','bloop','shadow','snow','sampling','lds','words'];
+test('all twelve selected sites appear exactly once', () => {
+ assert.equal(games.length, 12);
  assert.deepEqual(games.map(g => g.id), expected);
- assert.equal(new Set(games.map(g => g.url)).size, 11);
+ assert.equal(new Set(games.map(g => g.url)).size, 12);
 });
 test('all metadata and local previews are valid', () => {
  const ids = new Set(categories.map(c => c.id));
@@ -28,4 +28,17 @@ test('page has search, filter, accessibility and result elements', () => {
 });
 test('unselected unfinished games are absent', () => {
  assert.ok(!games.some(g=>/Yangzhou|Graphlings|RogueMaths/i.test(g.title)));
+});
+
+test('balance game is listed with its production URL and algebra filters', () => {
+ const game = games.find(g => g.id === 'balance');
+ assert.equal(game.url, 'https://balance.mrwalkermaths.com/');
+ assert.equal(game.category, 'algebra');
+ assert.ok(game.courses.includes('KS3') && game.courses.includes('IGCSE 4MA1'));
+});
+test('static game totals match the catalogue', () => {
+ const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+ assert.ok(html.includes(`Explore ${games.length} original maths games`));
+ assert.ok(html.includes(`${games.length} original games`));
+ assert.ok(html.includes(`Showing ${games.length} games`));
 });

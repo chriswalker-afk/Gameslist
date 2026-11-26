@@ -68,6 +68,26 @@ export const games = [
     "image": "./assets/previews/nova.svg"
   },
   {
+    "id": "balance",
+    "title": "How much does the sprite weigh?",
+    "category": "algebra",
+    "topics": [
+      "Solving equations",
+      "Balancing equations",
+      "Negative numbers",
+      "Brackets",
+      "Fractions"
+    ],
+    "courses": [
+      "KS3",
+      "IGCSE 4MA1",
+      "Foundation"
+    ],
+    "desc": "Balance sprites and weights to discover unknown values. Solve equations with negative numbers, brackets and fractions through interactive puzzles.",
+    "url": "https://balance.mrwalkermaths.com/",
+    "image": "./assets/previews/balance.svg"
+  },
+  {
     "id": "pileup",
     "title": "Pythagoras Pile Up",
     "category": "geometry",
