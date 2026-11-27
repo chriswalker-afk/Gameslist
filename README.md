@@ -1,10 +1,10 @@
 # Maths Games | Mr Walker Maths
 
-A curated, student-facing directory of 12 original maths games, hosted as a dependency-free static website.
+A curated, student-facing directory of 13 original maths games, hosted as a dependency-free static website.
 
 ## Version 1
 
-- Twelve approved game cards with concise descriptions, maths topics and course tags.
+- Thirteen approved game cards with concise descriptions, maths topics and course tags.
 - Distinct illustrative previews, four incorporating original artwork copied from the source game repositories.
 - Responsive layouts: three columns on desktop, two on tablets and one on phones.
 - Search matches titles, descriptions, topics and courses. Course and topic filters work together.
@@ -30,7 +30,7 @@ Open `http://localhost:8000/` in a browser. No build step is required.
 npm test
 ```
 
-Checks cover all twelve selected games, metadata integrity, asset existence, exclusion of unselected games, and page UI contracts.
+Checks cover all thirteen selected games, metadata integrity, asset existence, exclusion of unselected games, and page UI contracts.
 
 ## Before publishing
 
