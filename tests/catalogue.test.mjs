@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { games, categories } from '../games.js';
 
-const expected = ['ink','index','quadratics','nova','balance','pileup','bloop','shadow','snow','sampling','lds','words'];
-test('all twelve selected sites appear exactly once', () => {
- assert.equal(games.length, 12);
+const expected = ['ink','index','quadratics','nova','balance','cannongraphs','pileup','bloop','shadow','snow','sampling','lds','words'];
+test('all thirteen selected sites appear exactly once', () => {
+ assert.equal(games.length, 13);
  assert.deepEqual(games.map(g => g.id), expected);
- assert.equal(new Set(games.map(g => g.url)).size, 12);
+ assert.equal(new Set(games.map(g => g.url)).size, 13);
 });
 test('all metadata and local previews are valid', () => {
  const ids = new Set(categories.map(c => c.id));
@@ -41,4 +41,12 @@ test('static game totals match the catalogue', () => {
  assert.ok(html.includes(`Explore ${games.length} original maths games`));
  assert.ok(html.includes(`${games.length} original games`));
  assert.ok(html.includes(`Showing ${games.length} games`));
+});
+
+test('Cannon Graphs uses its custom domain and graphing curriculum tags', () => {
+ const game = games.find(g => g.id === 'cannongraphs');
+ assert.equal(game.url, 'https://cannongraphs.mrwalkermaths.com/');
+ assert.equal(game.category, 'algebra');
+ for (const course of ['KS3', 'IGCSE 4MA1', 'A level 9MA0']) assert.ok(game.courses.includes(course));
+ for (const topic of ['Graph sketching', 'Gradients', 'Quadratic graphs', 'Functions']) assert.ok(game.topics.includes(topic));
 });

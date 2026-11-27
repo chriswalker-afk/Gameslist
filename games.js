@@ -88,6 +88,27 @@ export const games = [
     "image": "./assets/previews/balance.svg"
   },
   {
+    "id": "cannongraphs",
+    "title": "Cannon Graphs!",
+    "category": "algebra",
+    "topics": [
+      "Graph sketching",
+      "Straight lines",
+      "Gradients",
+      "Quadratic graphs",
+      "Functions",
+      "Graph transformations"
+    ],
+    "courses": [
+      "KS3",
+      "IGCSE 4MA1",
+      "A level 9MA0"
+    ],
+    "desc": "Program graph cannons to guide Pips to safety. Explore 96 puzzles across eight worlds, including locked equations, movable cannons and anchor-placement challenges.",
+    "url": "https://cannongraphs.mrwalkermaths.com/",
+    "image": "./assets/previews/cannongraphs.svg"
+  },
+  {
     "id": "pileup",
     "title": "Pythagoras Pile Up",
     "category": "geometry",
